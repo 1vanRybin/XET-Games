@@ -35,7 +35,8 @@ public class Controller : MonoBehaviour
         }
         GetComponent<Rigidbody2D>().velocity = speed * moveDirection;
     }
-    
+        
+
     private void OnEnable()
     {
         _controls.Player.Enable();
