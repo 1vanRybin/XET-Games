@@ -204,11 +204,7 @@ SpriteRenderer:
   m_Size: {x: 2.64, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &48426580
@@ -859,11 +855,7 @@ SpriteRenderer:
   m_Size: {x: 5, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &359428559
@@ -1096,13 +1088,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: options
   m_isRightToLeft: 0
-<<<<<<< HEAD
   m_fontAsset: {fileID: 11400000, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
   m_sharedMaterial: {fileID: -737134194908468032, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
->>>>>>> master
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1312,13 +1299,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: exit
   m_isRightToLeft: 0
-<<<<<<< HEAD
   m_fontAsset: {fileID: 11400000, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
   m_sharedMaterial: {fileID: -737134194908468032, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
->>>>>>> master
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1608,11 +1590,7 @@ SpriteRenderer:
   m_Size: {x: 2.65, y: 0.63}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &711661238
@@ -1910,11 +1888,7 @@ SpriteRenderer:
   m_Size: {x: 6, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &990078098
@@ -1999,11 +1973,7 @@ SpriteRenderer:
   m_Size: {x: 13.8, y: 7.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1021196281
@@ -2087,11 +2057,7 @@ SpriteRenderer:
   m_Size: {x: 2.65, y: 0.63}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1080485831
@@ -2190,11 +2156,7 @@ SpriteRenderer:
   m_Size: {x: 2.65, y: 0.63}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1205082076
@@ -2257,13 +2219,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: authors
   m_isRightToLeft: 0
-<<<<<<< HEAD
   m_fontAsset: {fileID: 11400000, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
   m_sharedMaterial: {fileID: -737134194908468032, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
->>>>>>> master
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2834,11 +2791,7 @@ SpriteRenderer:
   m_Size: {x: 2.64, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1601080927
@@ -3541,11 +3494,7 @@ SpriteRenderer:
   m_Size: {x: 2.64, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-<<<<<<< HEAD
   m_WasSpriteAssigned: 1
-=======
-  m_WasSpriteAssigned: 0
->>>>>>> master
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1957047460
@@ -3623,13 +3572,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start
   m_isRightToLeft: 0
-<<<<<<< HEAD
   m_fontAsset: {fileID: 11400000, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
   m_sharedMaterial: {fileID: -737134194908468032, guid: ef0c94eef5b1ca643905cd4b9e6e1def, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
->>>>>>> master
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
