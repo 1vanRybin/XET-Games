@@ -39,5 +39,4 @@ public class TriggerText : MonoBehaviour
         if (col.tag == "Player")
             chargeText.enabled = false;
     }
-
 }
