@@ -198,7 +198,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
 --- !u!4 &124555113 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5223990903166569445, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6011734588809638425, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
   m_PrefabInstance: {fileID: 124555112}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &125750072
@@ -255,7 +255,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -279,12 +279,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125750072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34, y: -0.55, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &125750076
 MonoBehaviour:
@@ -343,7 +343,7 @@ Transform:
   m_Children:
   - {fileID: 505048126}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &505048125
 GameObject:
