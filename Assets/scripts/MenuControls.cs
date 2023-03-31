@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuControls : MonoBehaviour
 {
-    public void PlayPressed()
+    public void PlayPressed(string sceneName)
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(sceneName);
     }
 
     public void ExitPressed()
