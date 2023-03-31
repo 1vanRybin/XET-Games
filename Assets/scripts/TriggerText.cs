@@ -22,11 +22,6 @@ public class TriggerText : MonoBehaviour
         chargeLevel.text = count.ToString();
     }
 
-    private void Start()
-    {
-        chargeText.enabled = false;
-    }
-
 
     void OnTriggerEnter2D(Collider2D col)
     {
