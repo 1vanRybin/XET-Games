@@ -8,7 +8,19 @@ public class TriggerText : MonoBehaviour
 {
     [SerializeField] private Text chargeText;
     [SerializeField] private Text chargeLevel;
-    int count;
+    public static int count;
+
+    private void Start()
+    {
+        chargeText.enabled = false;
+    }
+
+    private void Update()
+    {
+        chargeLevel.color = (count <= 10) ?
+             Color.red: Color.green;
+        chargeLevel.text = count.ToString();
+    }
 
     private void Start()
     {
@@ -30,7 +42,6 @@ public class TriggerText : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E) && count<100)
                 count++;
-            chargeLevel.text = count.ToString();
         }
     }
 

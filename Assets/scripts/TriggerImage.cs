@@ -6,18 +6,25 @@ using UnityEngine.UI;
 
 public class TriggerImage : MonoBehaviour
 {
-    public Image image;
+    [SerializeField] Image image;
+    [SerializeField] Text LowChargeText;
 
     private void Start()
     {
         image.enabled = false;
+        LowChargeText.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            image.enabled = true;
+            if (TriggerText.count > 10)
+            {
+                TriggerText.count -= 10;
+                image.enabled = true;
+            }
+            else LowChargeText.enabled = true;
         }
     }
 
@@ -26,6 +33,7 @@ public class TriggerImage : MonoBehaviour
         if (collision.tag == "Player")
         {
             image.enabled = false;
+            LowChargeText.enabled = false;
         }
     }
 
