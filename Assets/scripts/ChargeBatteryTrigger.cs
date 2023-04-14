@@ -4,16 +4,13 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TriggerText : MonoBehaviour
+public class ChargeBatteryTrigger : MonoBehaviour
 {
-    [SerializeField] private Text chargeText;
+    [SerializeField] private Text helpText;
     [SerializeField] private Text chargeLevel;
+    [SerializeField] string inputText;
+    [SerializeField] Color textColor;
     public static int count;
-
-    private void Start()
-    {
-        chargeText.enabled = false;
-    }
 
     private void Update()
     {
@@ -23,27 +20,22 @@ public class TriggerText : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (col.tag == "Player")
-        {
-            chargeText.enabled = true;
-        }
+        helpText.text = inputText;
+        helpText.color = textColor;
+        helpText.enabled = true;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
-        {
-            if (Input.GetKey(KeyCode.E) && count<100)
-                count++;
-        }
+        if (Input.GetKey(KeyCode.E) && count<100)
+            count++;
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.tag == "Player")
-            chargeText.enabled = false;
+        helpText.enabled = false;
     }
 
 }

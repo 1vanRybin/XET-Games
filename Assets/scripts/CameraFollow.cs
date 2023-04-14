@@ -19,11 +19,14 @@ public class CameraFollow : MonoBehaviour
 
     private void Update()
     {
-        //transform.position.x>270 && transform.position.x < 580
         if (target == null) return;
 
-        targetPos = target.position + offset;
-        transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
+        var pos = target.position;
+        if (pos.y > -1.536252 && pos.x < 5.192284 && pos.y< 52.3863 && pos.x > -37.43445)
+        {
+            targetPos = target.position + offset;
+            transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
+        }
         
     }
 }

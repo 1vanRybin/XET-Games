@@ -19,9 +19,9 @@ public class TriggerImage : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            if (TriggerText.count > 10)
+            if (ChargeBatteryTrigger.count > 10)
             {
-                TriggerText.count -= 10;
+                ChargeBatteryTrigger.count -= 10;
                 image.enabled = true;
             }
             else LowChargeText.enabled = true;
