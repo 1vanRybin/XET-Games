@@ -3069,6 +3069,7 @@ GameObject:
   - component: {fileID: 1782701348}
   - component: {fileID: 1782701347}
   - component: {fileID: 1782701346}
+  - component: {fileID: 1782701350}
   m_Layer: 5
   m_Name: PadCanvas
   m_TagString: Untagged
@@ -3158,6 +3159,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1782701350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782701345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5d2fdee9da7a94fb3feabea5ddf2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CanvasPad: {fileID: 1782701348}
 --- !u!1 &2003112174
 GameObject:
   m_ObjectHideFlags: 0
