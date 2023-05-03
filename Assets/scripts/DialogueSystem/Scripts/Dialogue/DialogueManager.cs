@@ -28,6 +28,7 @@ public class DialogueManager : MonoBehaviour {
 		public int id;
 		public string npcText;
 		public List<Answer> answer;
+		//public CharName 
 	}
 
 
@@ -172,6 +173,7 @@ public class DialogueManager : MonoBehaviour {
 
 	void SetNextNode(Button button, int i) // событие, для перенаправления на другой узел диалога
 	{
+		if (i == 0) return;
 		button.onClick.AddListener(() => BuildDialogue(i));
 	}
 
@@ -190,11 +192,12 @@ public class DialogueManager : MonoBehaviour {
 	{
 		_active = false;
 		scrollRect.gameObject.SetActive(false);
+		buttons[0].gameObject.SetActive(false);
 	}
 
 	void ShowWindow() // показываем окно диалога
 	{
-		scrollRect.gameObject.SetActive(true);
+		buttons[0].gameObject.SetActive(true);
 		_active = true;
 	}
 
@@ -222,7 +225,7 @@ public class DialogueManager : MonoBehaviour {
 			return;
 		}
 
-		AddToList(false, 0, node[j].npcText, 0, string.Empty, false); // добавление текста NPC
+		AddToList(false, 0, node[j].npcText, 0, string.Empty, true); // добавление текста NPC
 
 		for(int i = 0; i < node[j].answer.Count; i++)
 		{
