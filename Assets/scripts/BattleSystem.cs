@@ -11,36 +11,45 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Text EnemyHP;
     [SerializeField] Text FightResult;
 
-    int playerHP;
-    int enemyHP;
-    bool isPlayerTurn;
+    static bool isPlayerTurn;
 
     private void Start()
     {
         FightResult.enabled = false;
-        isPlayerTurn = true;
-        playerHP = 100;
-        enemyHP = 100;
+        StartBattle();
     }
+    public static void StartBattle()
+    {
+        Player.HP = Player.MaxHP;
+        Player.Mana = Player.MaxMana;
+        Enemy.HP = Enemy.MaxHP;
+
+        isPlayerTurn = true;
+    }
+
     private void Update()
     {
-        PlayerHP.text = playerHP.ToString();
-        EnemyHP.text = enemyHP.ToString();
+        PlayerHP.text = Player.HP.ToString();
+        EnemyHP.text = Enemy.HP.ToString();
 
         if (!isPlayerTurn)
         {
-            playerHP -= Random.Range(1, 10) + 5;
-            isPlayerTurn = true;
+            EnemyAttack();
         }
 
-        if(playerHP<=0)
+        if (Player.HP < 0)
+            Player.HP = 0;
+        if (Enemy.HP < 0)
+            Enemy.HP = 0;
+
+        if (Player.HP <= 0)
         {
             FightResult.text = "YOU DIED";
             FightResult.color = Color.red;
             FightResult.enabled = true;
             Invoke("LoadScene", 3f);
         }
-        else if(enemyHP<=0)
+        else if(Enemy.HP <= 0)
         {
             FightResult.text = "YOU WIN";
             FightResult.color = Color.green;
@@ -54,26 +63,80 @@ public class BattleSystem : MonoBehaviour
         SceneManager.LoadScene("FirstLevel");
     }
 
-    public void Attack1()
+    void EnemyAttack()
     {
-        enemyHP -= 5;
-        isPlayerTurn = false;
+        var attack = 5 + Random.Range(1f, 20f);
+
+        if (Enemy.Weakness > 0)
+        {
+            attack -= 5;
+            Enemy.Weakness -= 1;
+        }
+        if (attack > Player.Defence)
+            Player.HP -= attack;
+        isPlayerTurn = true;
     }
 
-    public void Attack2()
+    public void BaseballHit()
     {
-        enemyHP -= 10;
         isPlayerTurn = false;
+        int powerOfAttack = 5;
+        float coef = 1.4f;
+        var attack = Random.Range(0, 100)<30 ? powerOfAttack * coef : powerOfAttack;
+
+        if (attack > Enemy.Defence)
+            Enemy.HP -= attack;
     }
 
-    public void Attack3()
+    public void Choke()
     {
-        enemyHP -= 20;
         isPlayerTurn = false;
+        for (int i = 0; i < 3; i++)
+        {
+            var attack = Random.Range(1, 3);
+
+            if (attack > Enemy.Defence)
+                Enemy.HP -= attack;
+        }
     }
 
-    public void Skip()
+    public void Slap()
     {
         isPlayerTurn = false;
+        if (Player.HP<50)
+        {
+            Player.Mana = Player.Mana >= 50? 100 : Player.Mana+50;
+            Player.HP -= 1;
+        }
+
+        else if(Player.HP>=50)
+        {
+            Enemy.HP -= 1;
+            Enemy.Weakness += 2;
+        }
+    }
+
+    public void PutBandage()
+    {
+        isPlayerTurn = false;
+        Player.HP += 0.2f * (Player.MaxHP - Player.HP);
     }
 }
+public class Player
+{
+    public const float MaxHP = 100;
+    public const float MaxMana = 100;
+    public static float HP { get; set; }
+    public static float Mana { get; set; }
+    public static float Defence { get; set; }
+    public static float Skill { get; set; }
+}
+
+public class Enemy
+{
+    public const float MaxHP = 100;
+    public static float HP { get; set; }
+    public static float Defence { get; set; }
+    public static int Weakness { get; set; }
+}
+

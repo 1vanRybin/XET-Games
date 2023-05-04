@@ -22,7 +22,7 @@ public class CodeCompiler : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogWarning("ABOBA : " + e);
+            Debug.LogWarning("WARNING : " + e);
         }
     }
 }
