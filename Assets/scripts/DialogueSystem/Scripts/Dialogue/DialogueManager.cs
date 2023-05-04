@@ -125,7 +125,10 @@ public class DialogueManager : MonoBehaviour {
 		buttons[id].text.text = text;
 		buttons[id].rect.sizeDelta = new Vector2(buttons[id].rect.sizeDelta.x, buttons[id].text.preferredHeight + offset);
 		buttons[id].button.interactable = isActive;
-		height = buttons[id].rect.sizeDelta.y;
+
+		if (id != 0)
+			height = buttons[id].rect.sizeDelta.y;
+
 		buttons[id].rect.anchoredPosition = new Vector2(0, -height/2 - curY);
 
 		if(exit)
@@ -136,12 +139,15 @@ public class DialogueManager : MonoBehaviour {
 		{
 			SetNextNode(buttons[id].button, toNode);
 		}
-
+		
 		if(setValue != 0) SetQuestStatus(buttons[id].button, setValue, questName);
 
 		id++;
-
+		
 		curY += height + offset;
+
+		height = 0;
+		
 		RectContent();
 	}
 
