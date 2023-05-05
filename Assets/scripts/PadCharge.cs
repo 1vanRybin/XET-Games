@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PadCharge : MonoBehaviour
 {
@@ -15,17 +17,16 @@ public class PadCharge : MonoBehaviour
     public Sprite charge8;
     public Sprite charge9;
     public Sprite charge10;
-    private SpriteRenderer _spriteRenderer;
-    
+    private Image _spriteRenderer;
+
     void Start()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponent<Image>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        _spriteRenderer.sprite = ChargeBatteryTrigger.count switch
+        _spriteRenderer.sprite = ChargeBatteryTrigger.ChargeLVL switch
         {
             0 => charge0,
             1 => charge1,
