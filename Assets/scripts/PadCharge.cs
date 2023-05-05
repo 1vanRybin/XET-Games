@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PadCharge : MonoBehaviour
 {
-    public int charge;
     public Sprite charge0;
     public Sprite charge1;
     public Sprite charge2;
@@ -21,16 +20,12 @@ public class PadCharge : MonoBehaviour
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        // if (_spriteRenderer == charge0)
-        // {
-        //     _spriteRenderer.sprite = charge0;
-        // }
     }
 
     // Update is called once per frame
     void Update()
     {
-        _spriteRenderer.sprite = charge switch
+        _spriteRenderer.sprite = ChargeBatteryTrigger.count switch
         {
             0 => charge0,
             1 => charge1,
