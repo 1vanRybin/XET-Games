@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] Text interaction;
     [SerializeField] Text helpText;
     [SerializeField] string inputText;
     [SerializeField] Color textColor;
+    [SerializeField] Image startBattle;
 
+    private void Start()
+    {
+        startBattle.enabled = false;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         helpText.text = inputText;
@@ -21,13 +26,14 @@ public class Interaction : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            interaction.enabled = true;
             helpText.enabled=false;
+            startBattle.enabled = true;
+            BattleSystem.StartBattle();
+            SceneManager.LoadScene("Fighting Scene");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         helpText.enabled = false;
-        interaction.enabled = false;
     }
 }

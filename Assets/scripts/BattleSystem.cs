@@ -9,7 +9,9 @@ public class BattleSystem : MonoBehaviour
 {
     [SerializeField] Text PlayerHP;
     [SerializeField] Text EnemyHP;
-    [SerializeField] Text FightResult;
+    [SerializeField] Image FightResult;
+    [SerializeField] Sprite WinResult;
+    [SerializeField] Sprite DefeatResult;
 
     static bool isPlayerTurn;
 
@@ -44,15 +46,13 @@ public class BattleSystem : MonoBehaviour
 
         if (Player.HP <= 0)
         {
-            FightResult.text = "YOU DIED";
-            FightResult.color = Color.red;
+            FightResult.sprite = DefeatResult;
             FightResult.enabled = true;
             Invoke("LoadScene", 3f);
         }
         else if(Enemy.HP <= 0)
         {
-            FightResult.text = "YOU WIN";
-            FightResult.color = Color.green;
+            FightResult.sprite = WinResult;
             FightResult.enabled = true;
             Invoke("LoadScene", 3f);
         }

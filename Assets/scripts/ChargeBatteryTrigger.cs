@@ -7,16 +7,13 @@ using UnityEngine.UI;
 public class ChargeBatteryTrigger : MonoBehaviour
 {
     [SerializeField] private Text helpText;
-    [SerializeField] private Text chargeLevel;
     [SerializeField] string inputText;
     [SerializeField] Color textColor;
     public static int count;
 
     private void Update()
     {
-        chargeLevel.color = (count <= 10) ?
-             Color.red: Color.green;
-        chargeLevel.text = count.ToString();
+
     }
 
 
