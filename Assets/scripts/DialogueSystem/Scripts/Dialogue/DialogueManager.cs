@@ -123,7 +123,9 @@ public class DialogueManager : MonoBehaviour {
 	void AddToList(bool exit, int toNode, string text, int setValue, string questName, bool isActive)
 	{
 		buttons[id].text.text = text;
-		buttons[id].rect.sizeDelta = new Vector2(buttons[id].rect.sizeDelta.x, buttons[id].text.preferredHeight + offset);
+		buttons[id].rect.sizeDelta = id == 0 ? new Vector2(buttons[id].rect.sizeDelta.x, buttons[id].rect.sizeDelta.y) : // высота панельки с текстом 
+			                                   new Vector2(buttons[id].rect.sizeDelta.x, buttons[id].text.preferredHeight + offset);
+		
 		buttons[id].button.interactable = isActive;
 
 		if (id != 0)
@@ -164,7 +166,7 @@ public class DialogueManager : MonoBehaviour {
 		foreach(ButtonComponent b in buttons)
 		{
 			b.text.text = string.Empty;
-			b.rect.sizeDelta = new Vector2(b.rect.sizeDelta.x, 0);
+			//b.rect.sizeDelta = new Vector2(b.rect.sizeDelta.x, b.rect.sizeDelta.y);
 			b.rect.anchoredPosition = new Vector2(b.rect.anchoredPosition.x, 0);
 			b.button.onClick.RemoveAllListeners();
 		}
