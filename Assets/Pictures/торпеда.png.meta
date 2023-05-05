@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 75b25b65b6107f941aee531a011ce3b4
+guid: 37f477189163cd24f9471ee3cf5f6e6f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,89 +101,143 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_0"
+      name: idle
       rect:
         serializedVersion: 2
-        x: 15
-        y: 856
-        width: 1330
-        height: 274
+        x: 116
+        y: 676
+        width: 160
+        height: 428
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b192a6d0c83be5146a90f8e99b222072
-      internalID: 1432492260
+      spriteID: 01ca3896c60da1d4d9c8655405dfaf02
+      internalID: 994657293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_2"
+      name: idle2
       rect:
         serializedVersion: 2
-        x: 15
-        y: 616
-        width: 665
-        height: 219
+        x: 324
+        y: 678
+        width: 160
+        height: 424
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb0f0e841ba6ac24589a2db33bedd4e2
-      internalID: 1321489375
+      spriteID: ae7e12b1aa16f1940a8e6d6035d9f16a
+      internalID: -1179449797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_3"
+      name: talkagressive
       rect:
         serializedVersion: 2
-        x: 15
-        y: 19
-        width: 1330
-        height: 274
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d172c4a735210a42a5656e9fca45176
-      internalID: -1152031929
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_1"
-      rect:
-        serializedVersion: 2
-        x: 940
+        x: 688
         y: 592
-        width: 297
-        height: 57
+        width: 464
+        height: 484
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95effaf931423c94ea0ded65c2b7cc39
-      internalID: 1856320988
+      spriteID: cbaf5ad4938f8e94db0e78067032dfe7
+      internalID: 280280219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agressive
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 592
+        width: 464
+        height: 484
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b8c7fea1fe6b5143a03019a840a8fb0
+      internalID: 1211114660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: talkok
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 16
+        width: 464
+        height: 484
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a88216871084316458171c42d068454d
+      internalID: 1996549559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: o
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 16
+        width: 464
+        height: 484
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef43b85234d1e294ab59cb65a9b549e1
+      internalID: -1638243195
       vertices: []
       indices: 
       edges: []
@@ -199,10 +253,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_0": 1432492260
-      "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_1": 1856320988
-      "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_2": 1321489375
-      "\u0432\u0441\u0435 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u044B_3": -1152031929
+      agressive: 1211114660
+      idle: 994657293
+      idle2: -1179449797
+      o: -1638243195
+      talkagressive: 280280219
+      talkok: 1996549559
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
