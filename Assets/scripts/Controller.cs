@@ -12,19 +12,6 @@ public class Controller : MonoBehaviour
     public float speed;
     private Rigidbody2D _rigidbody2D;
     private static readonly int Direction = Animator.StringToHash("Direction");
-
-    private Dictionary<(float, float), Action> _setAnimator = new Dictionary<(float, float), Action>()
-    {
-        { (0, 0), () => _animator.SetInteger(Direction, 0) },
-        { (1, 0), () => _animator.SetInteger(Direction, 1) },
-        { (-1, 0), () => _animator.SetInteger(Direction, -1) },
-        { (0, 1), () => _animator.SetInteger(Direction, 2) },
-        { (0, -1), () => _animator.SetInteger(Direction, -2) },
-        {((float)0.707107, (float)0.707107), () => _animator.SetInteger(Direction, 2)},
-        {((float)-0.707107, (float)-0.707107), () => _animator.SetInteger(Direction, 1)},
-        {((float)0.707107, (float)-0.707107), () => _animator.SetInteger(Direction, 1)},
-        {((float)-0.707107, (float)0.707107), () => _animator.SetInteger(Direction, -1)},
-    };
     private void Awake()
     {
         _controls = new PlayerController();
@@ -35,7 +22,9 @@ public class Controller : MonoBehaviour
     private void Update()
     {
         var moveDirection = _controls.Player.Move.ReadValue<Vector2>();
-        _setAnimator[((float)moveDirection.x, (float)moveDirection.y)]();
+        _animator.SetFloat("Horizontal", moveDirection.x);
+        _animator.SetFloat("Vertical", moveDirection.y);
+        _animator.SetFloat("Speed", moveDirection.SqrMagnitude());
         _rigidbody2D.velocity = speed * moveDirection;
     }
         
