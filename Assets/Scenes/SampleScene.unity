@@ -1439,8 +1439,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f341e8199bf2844a0c49a6626235ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeText: {fileID: 1149256741}
+  helpText: {fileID: 0}
   chargeLevel: {fileID: 2101112178}
+  inputText: 
+  textColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &842702031
 GameObject:
   m_ObjectHideFlags: 0
@@ -8515,6 +8517,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 22438252, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0009059675
+      objectReference: {fileID: 0}
     - target: {fileID: 22442268, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -10741,12 +10747,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5223990903166569445, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.19100043
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223990903166569445, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.138265
+      objectReference: {fileID: 0}
+    - target: {fileID: 5223990903166569445, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2555
+      value: 0.076
       objectReference: {fileID: 0}
     - target: {fileID: 5223990903166569445, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7991
+      value: -0.832
       objectReference: {fileID: 0}
     - target: {fileID: 5223990903166569445, guid: ae36f479e674cc940bf4dd7bc3207e99, type: 3}
       propertyPath: m_LocalPosition.z
