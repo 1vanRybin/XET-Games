@@ -1,142 +1,198 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
+public enum BattleStates {START, PLAYERTURN, ENEMYTURN, WIN, LOST}
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] Text PlayerHP;
-    [SerializeField] Text EnemyHP;
+    [SerializeField] GameObject PlayerPrefab;
+    [SerializeField] GameObject EnemyPrefab;
     [SerializeField] Image FightResult;
     [SerializeField] Sprite WinResult;
     [SerializeField] Sprite DefeatResult;
+    [SerializeField] Transform PlayerPos;
+    [SerializeField] Transform PnemyPos;
+    [SerializeField] Text PlayerHP;
+    [SerializeField] Text EnemyHP;
+    [SerializeField] private Text Check;
 
+    public BattleStates State;
     static bool isPlayerTurn;
 
-    private void Start()
-    {
-        FightResult.enabled = false;
-        StartBattle();
-    }
-    public static void StartBattle()
-    {
-        Player.HP = Player.MaxHP;
-        Player.Mana = Player.MaxMana;
-        Enemy.HP = Enemy.MaxHP;
+    private Unit playerUnit;
+    private Unit enemyUnit;
 
-        isPlayerTurn = true;
+    private Dictionary<int, Func<float>> playerAttack;
+
+    public void Start()
+    {
+        playerAttack = new Dictionary<int, Func<float>>();
+        playerAttack.Add(1, () => {
+            var powerOfAttack = 5;
+            var coef = 1.4f;
+            return Random.Range(0, 100) < 30 ? powerOfAttack * coef : powerOfAttack;
+        });
+        playerAttack.Add(2, () =>
+        {
+            var attack = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                attack += Random.Range(1, 3);
+            }
+            return attack;
+        });
+        
+        State = BattleStates.START;
+        StartCoroutine(SetupBattle());
     }
 
     private void Update()
     {
-        PlayerHP.text = Player.HP.ToString();
-        EnemyHP.text = Enemy.HP.ToString();
+        PlayerHP.text = playerUnit.CurrentHP.ToString();
+        EnemyHP.text = enemyUnit.CurrentHP.ToString();
+    }
 
-        if (!isPlayerTurn)
+    IEnumerator SetupBattle()
+    {
+        var playerGo = Instantiate(PlayerPrefab, PlayerPos);
+        playerUnit = playerGo.GetComponent<Unit>();
+        
+        var enemyGO = Instantiate(EnemyPrefab, PnemyPos);
+        enemyUnit = enemyGO.GetComponent<Unit>();
+        
+        yield return new WaitForSeconds(2f);  // тест шняга, перед запуском боя, пройдёт 2 секунды
+        
+        State = BattleStates.PLAYERTURN;
+        PlayerTurn();
+    }
+
+    void PlayerTurn()
+    {
+        // UI say chose your card
+    }
+
+    IEnumerator PlayerAttack(int i)
+    {
+        Check.text = " PLAYER KILL HIM!";
+        //text что игрок ходит
+        var attack = playerAttack[i]();
+        var isDead = enemyUnit.TakeDamage(attack);
+        // updHud
+        Check.text = $" He crying {attack}";
+        yield return new WaitForSeconds(1f);
+        
+        if (isDead)
         {
-            EnemyAttack();
+            State = BattleStates.WIN;
+            EndBattle();
         }
-
-        if (Player.HP < 0)
-            Player.HP = 0;
-        if (Enemy.HP < 0)
-            Enemy.HP = 0;
-
-        if (Player.HP <= 0)
+        else
         {
-            FightResult.sprite = DefeatResult;
-            FightResult.enabled = true;
-            Invoke("LoadScene", 3f);
-        }
-        else if(Enemy.HP <= 0)
-        {
-            FightResult.sprite = WinResult;
-            FightResult.enabled = true;
-            Invoke("LoadScene", 3f);
+            State = BattleStates.ENEMYTURN;
+            StartCoroutine(EnemyTurn());
         }
     }
 
-    void LoadScene()
+    IEnumerator EnemyTurn()
     {
-        SceneManager.LoadScene("FirstLevel");
-    }
-
-    void EnemyAttack()
-    {
+        //text что противник аткует
+        Check.text = "VAN SAMA HERE!";
+        yield return new WaitForSeconds(1f);
         var attack = 5 + Random.Range(1f, 20f);
-
-        if (Enemy.Weakness > 0)
+        Check.text = $"HE HURT YOU {attack}";
+        if (playerUnit.Weaknes > 0)
         {
             attack -= 5;
-            Enemy.Weakness -= 1;
+            playerUnit.Weaknes -= 1;
         }
-        if (attack > Player.Defence)
-            Player.HP -= attack;
-        isPlayerTurn = true;
-    }
+        
+        var isDead = playerUnit.TakeDamage(attack);
+        
+        // updHud
 
-    public void BaseballHit()
-    {
-        isPlayerTurn = false;
-        int powerOfAttack = 5;
-        float coef = 1.4f;
-        var attack = Random.Range(0, 100)<30 ? powerOfAttack * coef : powerOfAttack;
+        yield return new WaitForSeconds(1f);
 
-        if (attack > Enemy.Defence)
-            Enemy.HP -= attack;
-    }
-
-    public void Choke()
-    {
-        isPlayerTurn = false;
-        for (int i = 0; i < 3; i++)
+        if (isDead)
         {
-            var attack = Random.Range(1, 3);
-
-            if (attack > Enemy.Defence)
-                Enemy.HP -= attack;
+            State = BattleStates.LOST;
+            EndBattle();
+        }
+        else
+        {
+            State = BattleStates.PLAYERTURN;
+            PlayerTurn();
         }
     }
 
-    public void Slap()
+    void EndBattle()
     {
-        isPlayerTurn = false;
-        if (Player.HP<50)
+        switch (State)
         {
-            Player.Mana = Player.Mana >= 50? 100 : Player.Mana+50;
-            Player.HP -= 1;
-        }
-
-        else if(Player.HP>=50)
-        {
-            Enemy.HP -= 1;
-            Enemy.Weakness += 2;
+            case BattleStates.WIN:
+                FightResult.sprite = WinResult;
+                FightResult.enabled = true;
+                StartCoroutine(LoadSceneAfterDelay());
+                break;
+            case BattleStates.LOST:
+                FightResult.sprite = DefeatResult;
+                FightResult.enabled = true;
+                StartCoroutine(LoadSceneAfterDelay());
+                break;
         }
     }
 
-    public void PutBandage()
+    IEnumerator LoadSceneAfterDelay()
     {
-        isPlayerTurn = false;
-        Player.HP += 0.2f * (Player.MaxHP - Player.HP);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("FirstLevel");
+    }
+    
+    public void OnPlayerButton(int i)
+    {
+        if (State != BattleStates.PLAYERTURN) return;
+        State = BattleStates.ENEMYTURN;
+        StartCoroutine(PlayerAttack(i));
+    }
+
+    public void OnBandageButton()
+    {
+        if (State != BattleStates.PLAYERTURN) return;
+        State = BattleStates.ENEMYTURN;
+        StartCoroutine(PutBandage());
+    }
+    
+
+    IEnumerator PutBandage()
+    {
+        Check.text = "You HEALING OWOWOWOW!";
+        playerUnit.Heal(0.2f * (playerUnit.MaxHP - playerUnit.CurrentHP));
+        //upd UI and dialog
+
+        yield return new WaitForSeconds(1f);
+
+        State = BattleStates.ENEMYTURN;
+        StartCoroutine(EnemyTurn());
+    }
+    
+    private void Slap()
+    {
+        switch (playerUnit.CurrentHP)
+        {
+            case < 50:
+                playerUnit.Mana(50);
+                playerUnit.TakeDamage(1);
+                break;
+            case >= 50:
+                enemyUnit.TakeDamage(1);
+                enemyUnit.Weaknes += 2;
+                break;
+        }
+
     }
 }
-public class Player
-{
-    public const float MaxHP = 100;
-    public const float MaxMana = 100;
-    public static float HP { get; set; }
-    public static float Mana { get; set; }
-    public static float Defence { get; set; }
-    public static float Skill { get; set; }
-}
-
-public class Enemy
-{
-    public const float MaxHP = 100;
-    public static float HP { get; set; }
-    public static float Defence { get; set; }
-    public static int Weakness { get; set; }
-}
-

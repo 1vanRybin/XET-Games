@@ -28,7 +28,6 @@ public class Interaction : MonoBehaviour
         {
             helpText.enabled=false;
             startBattle.enabled = true;
-            BattleSystem.StartBattle();
             SceneManager.LoadScene("Fighting Scene");
         }
     }
