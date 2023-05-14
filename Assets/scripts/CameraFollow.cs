@@ -22,11 +22,8 @@ public class CameraFollow : MonoBehaviour
         if (target == null) return;
 
         var pos = target.position;
-        //if (pos.y > -1.536252 && pos.x < 5.192284 && pos.y< 52.3863 && pos.x > -37.43445)
-        {
-            targetPos = target.position + offset;
-            transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
-        }
-        
+
+        targetPos = target.position + offset;
+        transform.position = Vector3.Lerp(transform.position, targetPos, lerpSpeed * Time.deltaTime);
     }
 }

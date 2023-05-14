@@ -6,23 +6,17 @@ using UnityEngine;
 
 public class CodeCompiler : MonoBehaviour
 {
-    [SerializeField] string lacodeToCompile;
-
-    private void Start()
-    {
-        execute(lacodeToCompile);
-    }
-    public void execute(string codeToEvaluate)
+    public static object Execute(string codeToEvaluate)
     {
         try
         {
             var result = CSharpScript.EvaluateAsync(codeToEvaluate).GetAwaiter().GetResult();
-            Debug.Log("Result => " + codeToEvaluate);
-            Debug.Log(result);
+            return result;
         }
+
         catch (Exception e)
         {
-            Debug.LogWarning("WARNING : " + e);
+            return "WARNING : " + e.Message;
         }
     }
 }
