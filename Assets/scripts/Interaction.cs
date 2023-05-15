@@ -28,8 +28,13 @@ public class Interaction : MonoBehaviour
         {
             helpText.enabled=false;
             startBattle.enabled = true;
-            SceneManager.LoadScene("Fighting Scene");
+           Invoke(nameof(Loader),2f);
         }
+    }
+
+    private void Loader()
+    {
+        SceneManager.LoadScene("Fighting Scene");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

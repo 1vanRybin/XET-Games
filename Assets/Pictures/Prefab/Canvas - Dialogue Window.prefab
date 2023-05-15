@@ -1886,7 +1886,7 @@ MonoBehaviour:
   - {fileID: 11494838}
   - {fileID: 11485228}
   - {fileID: 11487820}
-  folder: Russian
+  folder: RuDialog
   offset: 10
 --- !u!1 &188892
 GameObject:

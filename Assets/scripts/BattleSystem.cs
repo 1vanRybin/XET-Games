@@ -21,7 +21,10 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Text PlayerHP;
     [SerializeField] Text EnemyHP;
     [SerializeField] private Text Check;
-
+    
+    private Animator _playerAnimator;
+    private Animator _enemyAnimator;
+    
     public BattleStates State;
     static bool isPlayerTurn;
 
@@ -48,6 +51,7 @@ public class BattleSystem : MonoBehaviour
             return attack;
         });
         
+        
         State = BattleStates.START;
         StartCoroutine(SetupBattle());
     }
@@ -62,9 +66,11 @@ public class BattleSystem : MonoBehaviour
     {
         var playerGo = Instantiate(PlayerPrefab, PlayerPos);
         playerUnit = playerGo.GetComponent<Unit>();
+        _playerAnimator = playerGo.GetComponent<Animator>();
         
         var enemyGO = Instantiate(EnemyPrefab, PnemyPos);
         enemyUnit = enemyGO.GetComponent<Unit>();
+        _enemyAnimator = enemyGO.GetComponent<Animator>();
         
         yield return new WaitForSeconds(2f);  // тест шняга, перед запуском боя, пройдёт 2 секунды
         
@@ -74,18 +80,21 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
+        Check.text = "Player! Your Turn!";
         // UI say chose your card
     }
 
     IEnumerator PlayerAttack(int i)
     {
-        Check.text = " PLAYER KILL HIM!";
+        Check.text = $" {playerUnit.UnitName.ToUpper()} KILL HIM!";
         //text что игрок ходит
         var attack = playerAttack[i]();
         var isDead = enemyUnit.TakeDamage(attack);
         // updHud
+        _enemyAnimator.SetBool("GetHit",true);
         Check.text = $" He crying {attack}";
         yield return new WaitForSeconds(1f);
+        _enemyAnimator.SetBool("GetHit", false);
         
         if (isDead)
         {
@@ -102,20 +111,20 @@ public class BattleSystem : MonoBehaviour
     IEnumerator EnemyTurn()
     {
         //text что противник аткует
-        Check.text = "VAN SAMA HERE!";
+        Check.text = $"{enemyUnit.UnitName} is attacking you!";
         yield return new WaitForSeconds(1f);
-        var attack = 5 + Random.Range(1f, 20f);
+        var attack = 5 + Random.Range(1, 20) + 20;
         Check.text = $"HE HURT YOU {attack}";
+        
         if (playerUnit.Weaknes > 0)
         {
             attack -= 5;
             playerUnit.Weaknes -= 1;
         }
-        
+       
         var isDead = playerUnit.TakeDamage(attack);
         
         // updHud
-
         yield return new WaitForSeconds(1f);
 
         if (isDead)
@@ -150,7 +159,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator LoadSceneAfterDelay()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene("Start Location");
     }
     
     public void OnPlayerButton(int i)

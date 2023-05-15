@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Unit: MonoBehaviour
@@ -13,21 +14,22 @@ public class Unit: MonoBehaviour
 
         public bool TakeDamage(float dmg)
         {
-                CurrentHP -= dmg;
-                
+                CurrentHP -= (float)Math.Round(dmg);
+                if (CurrentHP <= 0)
+                        CurrentHP = 0;
                 return CurrentHP <= 0;
         }
 
         public void Heal(float heal)
         {
-                CurrentHP += heal;
+                CurrentHP += (float)Math.Round(heal);
                 if (CurrentHP > MaxHP)
                         CurrentHP = MaxHP;
         }
 
         public void Mana(float helMana)
         {
-                CurrentMana += helMana;
+                CurrentMana += (float)Math.Round(helMana);
                 if (CurrentMana > MaxMana)
                         CurrentHP = MaxHP;
         }

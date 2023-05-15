@@ -1440,7 +1440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   helpText: {fileID: 0}
-  chargeLevel: {fileID: 2101112178}
   inputText: 
   textColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &842702031
@@ -8501,10 +8500,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas - Dialogue Window
       objectReference: {fileID: 0}
-    - target: {fileID: 11415482, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
-      propertyPath: folder
-      value: RuDialog
-      objectReference: {fileID: 0}
     - target: {fileID: 22412734, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8519,7 +8514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22438252, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0009059675
+      value: 0.0000110697
       objectReference: {fileID: 0}
     - target: {fileID: 22442268, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9878,44 +9873,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1720409588}
   m_CullTransparentMesh: 1
---- !u!1 &1747164701 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4941860533428685457, guid: b9ad89b2151f9484b80d77eec76c1a4c, type: 3}
-  m_PrefabInstance: {fileID: 2805464019087758328}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1747164708
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747164701}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d1fa0b28fb111a441925fcbb4db5856b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
---- !u!114 &1747164709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1747164701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 864e209644c6e7746829d2149f522135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hintText: {fileID: 1342925133}
 --- !u!1 &1769118735
 GameObject:
   m_ObjectHideFlags: 0
@@ -10721,6 +10678,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1429658110269618508, guid: b9ad89b2151f9484b80d77eec76c1a4c, type: 3}
+      propertyPath: hintText
+      value: 
+      objectReference: {fileID: 1342925133}
     - target: {fileID: 4941860533428685457, guid: b9ad89b2151f9484b80d77eec76c1a4c, type: 3}
       propertyPath: m_Name
       value: Torpeda

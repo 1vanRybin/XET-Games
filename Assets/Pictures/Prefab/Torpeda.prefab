@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 94687732809829528}
   - component: {fileID: 2804001500871596788}
   - component: {fileID: 4891156206297114383}
+  - component: {fileID: 1429658110269618508}
+  - component: {fileID: 9056564862415849319}
   m_Layer: 0
   m_Name: Torpeda
   m_TagString: Untagged
@@ -164,3 +166,36 @@ CircleCollider2D:
   m_Offset: {x: -0.029032608, y: -0.68710077}
   serializedVersion: 2
   m_Radius: 2.8561335
+--- !u!114 &1429658110269618508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941860533428685457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864e209644c6e7746829d2149f522135, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintText: {fileID: 0}
+--- !u!95 &9056564862415849319
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941860533428685457}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d1fa0b28fb111a441925fcbb4db5856b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
