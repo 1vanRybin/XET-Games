@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class Pad : MonoBehaviour
 {
     public Canvas CanvasPad;
+    public static Canvas pad;
 
     private void Start()
     {
+        pad = CanvasPad;
         CanvasPad.enabled = false;
     }
 

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class DialogTrigerText : MonoBehaviour
 { 
     [SerializeField] private Text hintText;
+    [SerializeField] string text;
+    [SerializeField] Color textColor;
     private void Start()
     {
         hintText.enabled = false;
@@ -16,6 +18,8 @@ public class DialogTrigerText : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
+            hintText.color = textColor;
+            hintText.text = text;
             hintText.enabled = true;
         }
     }
