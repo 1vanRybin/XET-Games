@@ -48,7 +48,7 @@ public class RepairMalfunctions : MonoBehaviour
 
     public void CheckResult()
     {
-        var compiledCode = CodeCompiler.Execute(input.text).ToString();
+        var compiledCode = CodeCompiler.Execute(input.text);
         if (compiledCode == answer)
         {
             repairedObj.sortingOrder = 2;
