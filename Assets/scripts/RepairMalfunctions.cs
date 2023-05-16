@@ -48,8 +48,8 @@ public class RepairMalfunctions : MonoBehaviour
 
     public void CheckResult()
     {
-        var code = CodeCompiler.Execute(input.text).ToString();
-        if (code == answer)
+        var compiledCode = CodeCompiler.Execute(input.text).ToString();
+        if (compiledCode == answer)
         {
             repairedObj.sortingOrder = 2;
             helpText.fontSize = 30;
@@ -63,7 +63,7 @@ public class RepairMalfunctions : MonoBehaviour
         {
             helpText.fontSize = 25;
             helpText.enabled = true;
-            helpText.text = "Wrong answer: " + code + "\nExpected other.";
+            helpText.text = "Wrong answer: " + compiledCode + "\nExpected other.";
         }
     }
 
