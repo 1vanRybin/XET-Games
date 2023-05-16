@@ -18,9 +18,13 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] Sprite DefeatResult;
     [SerializeField] Transform PlayerPos;
     [SerializeField] Transform PnemyPos;
-    [SerializeField] Text PlayerHP;
-    [SerializeField] Text EnemyHP;
+    [SerializeField] Slider PlayerHP;
+    [SerializeField] Slider EnemyHP;
     [SerializeField] private Text Check;
+    
+
+
+    
     
     private Animator _playerAnimator;
     private Animator _enemyAnimator;
@@ -50,16 +54,15 @@ public class BattleSystem : MonoBehaviour
             }
             return attack;
         });
-        
-        
+
         State = BattleStates.START;
         StartCoroutine(SetupBattle());
     }
 
     private void Update()
     {
-        PlayerHP.text = playerUnit.CurrentHP.ToString();
-        EnemyHP.text = enemyUnit.CurrentHP.ToString();
+        PlayerHP.value = playerUnit.CurrentHP;
+        EnemyHP.value = enemyUnit.CurrentHP;
     }
 
     IEnumerator SetupBattle()
@@ -72,6 +75,9 @@ public class BattleSystem : MonoBehaviour
         enemyUnit = enemyGO.GetComponent<Unit>();
         _enemyAnimator = enemyGO.GetComponent<Animator>();
         
+        PlayerHP.maxValue = playerUnit.MaxHP;
+        EnemyHP.maxValue = enemyUnit.MaxHP;
+
         yield return new WaitForSeconds(2f);  // тест шняга, перед запуском боя, пройдёт 2 секунды
         
         State = BattleStates.PLAYERTURN;

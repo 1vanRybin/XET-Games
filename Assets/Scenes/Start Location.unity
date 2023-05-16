@@ -1587,7 +1587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22438252, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000022560358
+      value: 65.72446
       objectReference: {fileID: 0}
     - target: {fileID: 22442268, guid: da55e24e9aff8c44c8f0c47a44c38205, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1811,7 +1811,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1775806264, guid: 79d307e3617aad94e97066fb0fd7425d, type: 3}
+  m_Sprite: {fileID: 1790646831, guid: 1398052ce86dd17489b86409f2b93fc2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
