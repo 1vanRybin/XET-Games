@@ -6,9 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System.Xml;
 using System.IO;
+using TMPro;
 
-public class DialogueManager : MonoBehaviour {
+public class DialogueManager : MonoBehaviour
+{
+	//TODO  Добавить в дилаоги Teller(Имя персонажа), charStatus (Имя спрайта для отображения эмоции) 
 
+	public Image charactere;
 	public ScrollRect scrollRect;
 	public ButtonComponent[] buttons; // первый элемент списка, всегда будет использоваться для вывода текста NPC, остальные элементы для ответов, соответственно, общее их количество должно быть достаточным
 	public string folder = "Russian"; // подпапка в Resources, для чтения
@@ -16,6 +20,7 @@ public class DialogueManager : MonoBehaviour {
 
 	private string fileName, lastName;
 	private List<Dialogue> node;
+	private List<Sprite> charactereIm = new ();
 	private Dialogue dialogue;
 	private Answer answer;
 	private float curY, height;
@@ -86,6 +91,7 @@ public class DialogueManager : MonoBehaviour {
 					dialogue.answer = new List<Answer>();
 					dialogue.npcText = reader.GetAttribute("npc");
 					dialogue.id = GetINT(reader.GetAttribute("id"));
+					charactereIm.Add(Resources.Load<Sprite>(reader.GetAttribute("charName")));
 					node.Add(dialogue);
 
 					XmlReader inner = reader.ReadSubtree();
@@ -233,6 +239,7 @@ public class DialogueManager : MonoBehaviour {
 			return;
 		}
 
+		charactere.sprite = charactereIm[j];
 		AddToList(false, 0, node[j].npcText, 0, string.Empty, true); // добавление текста NPC
 
 		for(int i = 0; i < node[j].answer.Count; i++)
