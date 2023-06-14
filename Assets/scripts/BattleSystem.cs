@@ -24,8 +24,6 @@ public class BattleSystem : MonoBehaviour
     
 
 
-    
-    
     private Animator _playerAnimator;
     private Animator _enemyAnimator;
     
@@ -122,10 +120,10 @@ public class BattleSystem : MonoBehaviour
         var attack = 5 + Random.Range(1, 20) + 20;
         Check.text = $"HE HURT YOU {attack}";
         
-        if (playerUnit.Weaknes > 0)
+        if (playerUnit.Weakness > 0)
         {
             attack -= 5;
-            playerUnit.Weaknes -= 1;
+            playerUnit.Weakness -= 1;
         }
        
         var isDead = playerUnit.TakeDamage(attack);
@@ -205,7 +203,7 @@ public class BattleSystem : MonoBehaviour
                 break;
             case >= 50:
                 enemyUnit.TakeDamage(1);
-                enemyUnit.Weaknes += 2;
+                enemyUnit.Weakness += 2;
                 break;
         }
 
