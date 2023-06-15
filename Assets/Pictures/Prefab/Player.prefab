@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5223990901486150114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.3021, y: 0.6042, z: 0}
-  m_LocalScale: {x: 0.84529, y: 0.84529, z: 0.84529}
+  m_LocalScale: {x: 1.0074275, y: 1.0074275, z: 1.0074275}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -181,11 +181,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17fd3b9520fc4cbeb15c9739aa8d780e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 100
-  MaxMana: 100
-  UnitName: Player
-  CurrentHP: 100
-  CurrentMana: 100
-  Defence: 15
-  Skill: 0
-  Weaknes: 0
