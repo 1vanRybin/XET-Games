@@ -8,6 +8,8 @@ public class ChangeScene : MonoBehaviour
 {
     [SerializeField] private string newLevel;
     [SerializeField] private Text TextForChangeLvl;
+    [SerializeField] private Transform player;
+    [SerializeField] private Vector3 positionInNextScene;
 
     private void Start()
     {
@@ -18,7 +20,11 @@ public class ChangeScene : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.tag == "Player")
+        {
+            TextForChangeLvl.text = "E для выхода";
+            TextForChangeLvl.color = Color.red;
             TextForChangeLvl.enabled = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collider)
@@ -26,7 +32,10 @@ public class ChangeScene : MonoBehaviour
         if (collider.tag == "Player")
         {
             if (Input.GetKey(KeyCode.E))
+            {
                 SceneManager.LoadScene(newLevel);
+                player.position = positionInNextScene;
+            }
         }
     }
 

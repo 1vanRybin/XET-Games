@@ -11,7 +11,6 @@ using UnityEngine;
 
 public class CodeCompiler : MonoBehaviour
 {
-
     public static string Execute(string codeToEvaluate)
     {
         var options = ScriptOptions.Default

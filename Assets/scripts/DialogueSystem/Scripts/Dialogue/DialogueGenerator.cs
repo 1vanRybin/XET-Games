@@ -12,13 +12,15 @@ public class DialogueGenerator : MonoBehaviour {
 	[System.Serializable] public struct DialogueNode
 	{
 		public string npcText;
+		public string Teller;
+		public string tellerImage;
+		public string playerImage;
 		public PlayerAnswer[] playerAnswer;
 	}
 
 	[System.Serializable] public struct PlayerAnswer
 	{
 		public string text;
-
 		[Tooltip("Этот ответ закрывает окно диалога?")]
 		public bool exit;
 
@@ -60,6 +62,15 @@ public class DialogueGenerator : MonoBehaviour {
 			userNode.Attributes.Append(attribute);
 			attribute = xmlDoc.CreateAttribute("npc");
 			attribute.Value = node[j].npcText;
+			userNode.Attributes.Append(attribute);
+			attribute = xmlDoc.CreateAttribute("teller");
+			attribute.Value = node[j].Teller;
+			userNode.Attributes.Append(attribute);
+			attribute = xmlDoc.CreateAttribute("tellerImage");
+			attribute.Value = node[j].tellerImage;
+			userNode.Attributes.Append(attribute);
+			attribute = xmlDoc.CreateAttribute("playerImage");
+			attribute.Value = node[j].playerImage;
 			userNode.Attributes.Append(attribute);
 
 			for(int i = 0; i < node[j].playerAnswer.Length; i++)

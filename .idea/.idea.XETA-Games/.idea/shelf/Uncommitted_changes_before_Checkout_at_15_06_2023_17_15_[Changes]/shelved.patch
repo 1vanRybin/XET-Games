@@ -1,0 +1,17 @@
+Index: Assets/scripts/CodeCompiler.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using System;\r\nusing System.Collections;\r\nusing System.Collections.Generic;\r\nusing System.Threading.Tasks;\r\nusing Microsoft.CodeAnalysis;\r\nusing Microsoft.CodeAnalysis.CSharp.Scripting;\r\nusing Microsoft.CodeAnalysis.Scripting;\r\nusing Mono.Cecil.Cil;\r\nusing UnityEditor;\r\nusing UnityEngine;\r\n\r\npublic class CodeCompiler : MonoBehaviour\r\n{\r\n\r\n    public static string Execute(string codeToEvaluate)\r\n    {\r\n        var options = ScriptOptions.Default\r\n            .AddImports(\"System\", \"System.IO\", \"System.Collections.Generic\",\r\n                \"System.Console\", \"System.Diagnostics\");\r\n        try\r\n        {\r\n            var code = @\"\r\n                using System;\r\n                using System.Collections.Generic;\r\n\r\n                public static class MyClass\r\n                {\r\n                        public static List<int> MyMethod()\r\n                    {\r\n                        return new List<int>() {\r\n                            MiddleOf(1, 30, 2),\r\n                            MiddleOf(2,3,4),\r\n                            MiddleOf(6, 7, 5)};\r\n                    }\r\n\r\n                    \" +\r\n                    codeToEvaluate +\r\n                    @\"\r\n                }\r\n\r\n                return MyClass.MyMethod();\r\n                \";\r\n\r\n\r\n            var result = CSharpScript.EvaluateAsync<List<int>>(code, options);\r\n            result.Wait();\r\n            var answer=string.Join(\" \", result.Result);\r\n\r\n            return answer;\r\n        }\r\n\r\n        catch (Exception e)\r\n        {\r\n            return \"WARNING : \" + e.Message;\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Assets/scripts/CodeCompiler.cs b/Assets/scripts/CodeCompiler.cs
+--- a/Assets/scripts/CodeCompiler.cs	(revision ffb6a820923d9d77e2c674ba372d24f9feab88ca)
++++ b/Assets/scripts/CodeCompiler.cs	(date 1686762072082)
+@@ -54,4 +54,4 @@
+             return "WARNING : " + e.Message;
+         }
+     }
+-}
++}
+\ No newline at end of file

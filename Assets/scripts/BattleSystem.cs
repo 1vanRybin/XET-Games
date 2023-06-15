@@ -24,8 +24,6 @@ public class BattleSystem : MonoBehaviour
     
 
 
-    
-    
     private Animator _playerAnimator;
     private Animator _enemyAnimator;
     
@@ -34,17 +32,19 @@ public class BattleSystem : MonoBehaviour
 
     private Unit playerUnit;
     private Unit enemyUnit;
-
+    
     private Dictionary<int, Func<float>> playerAttack;
+    private Dictionary<int, Func<float>> attacks;
 
     public void Start()
     {
+        
         playerAttack = new Dictionary<int, Func<float>>();
-        playerAttack.Add(1, () => {
-            var powerOfAttack = 5;
-            var coef = 1.4f;
-            return Random.Range(0, 100) < 30 ? powerOfAttack * coef : powerOfAttack;
-        });
+        attacks = new Dictionary<int, Func<float>>();
+
+        attacks.Add(10, () => FireBall());
+        attacks.Add(2, () => PutBandage());
+        
         playerAttack.Add(2, () =>
         {
             var attack = 0;
@@ -64,7 +64,7 @@ public class BattleSystem : MonoBehaviour
         PlayerHP.value = playerUnit.CurrentHP;
         EnemyHP.value = enemyUnit.CurrentHP;
     }
-
+    
     IEnumerator SetupBattle()
     {
         var playerGo = Instantiate(PlayerPrefab, PlayerPos);
@@ -77,6 +77,15 @@ public class BattleSystem : MonoBehaviour
         
         PlayerHP.maxValue = playerUnit.MaxHP;
         EnemyHP.maxValue = enemyUnit.MaxHP;
+        
+        playerAttack.Add(1, () => {
+            var damage = 0f;
+            foreach (var kvp in DeckCreate.cards[0].Subsequence)
+            {
+                damage += attacks[kvp]();
+            }
+            return damage;
+        });
 
         yield return new WaitForSeconds(2f);  // тест шняга, перед запуском боя, пройдёт 2 секунды
         
@@ -84,12 +93,13 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
+
+
     void PlayerTurn()
     {
         Check.text = "Player! Your Turn!";
         // UI say chose your card
     }
-
     IEnumerator PlayerAttack(int i)
     {
         Check.text = $" {playerUnit.UnitName.ToUpper()} KILL HIM!";
@@ -122,10 +132,10 @@ public class BattleSystem : MonoBehaviour
         var attack = 5 + Random.Range(1, 20) + 20;
         Check.text = $"HE HURT YOU {attack}";
         
-        if (playerUnit.Weaknes > 0)
+        if (playerUnit.Weakness > 0)
         {
             attack -= 5;
-            playerUnit.Weaknes -= 1;
+            playerUnit.Weakness -= 1;
         }
        
         var isDead = playerUnit.TakeDamage(attack);
@@ -174,40 +184,16 @@ public class BattleSystem : MonoBehaviour
         State = BattleStates.ENEMYTURN;
         StartCoroutine(PlayerAttack(i));
     }
-
-    public void OnBandageButton()
-    {
-        if (State != BattleStates.PLAYERTURN) return;
-        State = BattleStates.ENEMYTURN;
-        StartCoroutine(PutBandage());
-    }
     
-
-    IEnumerator PutBandage()
+    private float PutBandage()
     {
         Check.text = "You HEALING OWOWOWOW!";
         playerUnit.Heal(0.2f * (playerUnit.MaxHP - playerUnit.CurrentHP));
-        //upd UI and dialog
-
-        yield return new WaitForSeconds(1f);
-
-        State = BattleStates.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
+        return 0;
     }
-    
-    private void Slap()
-    {
-        switch (playerUnit.CurrentHP)
-        {
-            case < 50:
-                playerUnit.Mana(50);
-                playerUnit.TakeDamage(1);
-                break;
-            case >= 50:
-                enemyUnit.TakeDamage(1);
-                enemyUnit.Weaknes += 2;
-                break;
-        }
 
+    private float FireBall()
+    {
+        return 10;
     }
 }
