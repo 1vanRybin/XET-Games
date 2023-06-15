@@ -181,3 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17fd3b9520fc4cbeb15c9739aa8d780e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHP: 100
+  MaxMana: 100
+  UnitName: Player
+  CurrentHP: 100
+  CurrentMana: 100
+  Defence: 0
+  Skill: 0
