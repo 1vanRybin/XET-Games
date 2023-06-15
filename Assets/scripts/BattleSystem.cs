@@ -32,14 +32,18 @@ public class BattleSystem : MonoBehaviour
 
     private Unit playerUnit;
     private Unit enemyUnit;
-
-    private Dictionary<int, Action> attacks;
+    
     private Dictionary<int, Func<float>> playerAttack;
+    private Dictionary<int, Func<float>> attacks;
 
     public void Start()
     {
         
         playerAttack = new Dictionary<int, Func<float>>();
+        attacks = new Dictionary<int, Func<float>>();
+
+        attacks.Add(10, () => FireBall());
+        attacks.Add(2, () => PutBandage());
         
         playerAttack.Add(2, () =>
         {
@@ -74,16 +78,11 @@ public class BattleSystem : MonoBehaviour
         PlayerHP.maxValue = playerUnit.MaxHP;
         EnemyHP.maxValue = enemyUnit.MaxHP;
         
-
-        attacks = new Dictionary<int, Action>();
-        
-        attacks.Add(2, () => PutBandage());
-
         playerAttack.Add(1, () => {
             var damage = 0f;
             foreach (var kvp in DeckCreate.cards[0].Subsequence)
             {
-                attacks[kvp].Invoke();
+                damage += attacks[kvp]();
             }
             return damage;
         });
@@ -101,7 +100,6 @@ public class BattleSystem : MonoBehaviour
         Check.text = "Player! Your Turn!";
         // UI say chose your card
     }
-
     IEnumerator PlayerAttack(int i)
     {
         Check.text = $" {playerUnit.UnitName.ToUpper()} KILL HIM!";
@@ -186,40 +184,16 @@ public class BattleSystem : MonoBehaviour
         State = BattleStates.ENEMYTURN;
         StartCoroutine(PlayerAttack(i));
     }
-
-    public void OnBandageButton()
-    {
-        if (State != BattleStates.PLAYERTURN) return;
-        State = BattleStates.ENEMYTURN;
-        StartCoroutine(PutBandage());
-    }
     
-
-    IEnumerator PutBandage()
+    private float PutBandage()
     {
         Check.text = "You HEALING OWOWOWOW!";
         playerUnit.Heal(0.2f * (playerUnit.MaxHP - playerUnit.CurrentHP));
-        //upd UI and dialog
-
-        yield return new WaitForSeconds(1f);
-
-        State = BattleStates.ENEMYTURN;
-        StartCoroutine(EnemyTurn());
+        return 0;
     }
-    
-    private void Slap()
-    {
-        switch (playerUnit.CurrentHP)
-        {
-            case < 50:
-                playerUnit.Mana(50);
-                playerUnit.TakeDamage(1);
-                break;
-            case >= 50:
-                enemyUnit.TakeDamage(1);
-                enemyUnit.Weakness += 2;
-                break;
-        }
 
+    private float FireBall()
+    {
+        return 10;
     }
 }
