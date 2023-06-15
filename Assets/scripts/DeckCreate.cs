@@ -67,7 +67,7 @@ public class DeckCreate : MonoBehaviour
           MyClass.methods.Add(1);
        }
 } 
-public static class Heale
+public static class Heal
 {
      public static void PutBandage()
       {
@@ -81,7 +81,7 @@ public static class Shields
           MyClass.methods.Add(3);
        }
 }
-public static class Weakenes
+public static class Weakeness
 {
      public static void WeakenBooze()
       {

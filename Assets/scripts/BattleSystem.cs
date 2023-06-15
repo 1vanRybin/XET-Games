@@ -33,16 +33,14 @@ public class BattleSystem : MonoBehaviour
     private Unit playerUnit;
     private Unit enemyUnit;
 
+    private Dictionary<int, Action> attacks;
     private Dictionary<int, Func<float>> playerAttack;
 
     public void Start()
     {
+        
         playerAttack = new Dictionary<int, Func<float>>();
-        playerAttack.Add(1, () => {
-            var powerOfAttack = 5;
-            var coef = 1.4f;
-            return Random.Range(0, 100) < 30 ? powerOfAttack * coef : powerOfAttack;
-        });
+        
         playerAttack.Add(2, () =>
         {
             var attack = 0;
@@ -62,7 +60,7 @@ public class BattleSystem : MonoBehaviour
         PlayerHP.value = playerUnit.CurrentHP;
         EnemyHP.value = enemyUnit.CurrentHP;
     }
-
+    
     IEnumerator SetupBattle()
     {
         var playerGo = Instantiate(PlayerPrefab, PlayerPos);
@@ -75,12 +73,28 @@ public class BattleSystem : MonoBehaviour
         
         PlayerHP.maxValue = playerUnit.MaxHP;
         EnemyHP.maxValue = enemyUnit.MaxHP;
+        
+
+        attacks = new Dictionary<int, Action>();
+        
+        attacks.Add(2, () => PutBandage());
+
+        playerAttack.Add(1, () => {
+            var damage = 0f;
+            foreach (var kvp in DeckCreate.cards[0].Subsequence)
+            {
+                attacks[kvp].Invoke();
+            }
+            return damage;
+        });
 
         yield return new WaitForSeconds(2f);  // тест шняга, перед запуском боя, пройдёт 2 секунды
         
         State = BattleStates.PLAYERTURN;
         PlayerTurn();
     }
+
+
 
     void PlayerTurn()
     {
