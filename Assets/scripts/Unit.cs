@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class Unit: MonoBehaviour
 { 
-        public float MaxHP { get; } = 100;
-        public float MaxMana { get; } = 100;
-        public string UnitName { get; }
-        public float CurrentHP { get; private set; }
-        public float CurrentMana { get; private set; }
-        public float Defence { get; }
-        public float Skill { get; }
+        public float MaxHP  = 100;
+        public float MaxMana  = 100;
+        public string UnitName;
+        public float CurrentHP;
+        public float CurrentMana;
+        public float Defence;
+        public float Skill;
         public float Weakness { get; set; }
 
     public bool TakeDamage(float dmg)
