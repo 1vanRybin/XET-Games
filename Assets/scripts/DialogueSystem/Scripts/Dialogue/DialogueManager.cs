@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour {
 	public ButtonComponent[] buttons; // первый элемент списка, всегда будет использоваться для вывода текста NPC, остальные элементы для ответов, соответственно, общее их количество должно быть достаточным
 	public string folder = "Russian"; // подпапка в Resources, для чтения
 	public int offset = 10;
+	public Text teller;
 	public Image playerImage;
 	public Image tellerImage;
 	private string fileName, lastName;
@@ -28,6 +29,7 @@ public class DialogueManager : MonoBehaviour {
 	{
 		public int id;
 		public string npcText;
+		public string teller;
 		public List<Answer> answer;
 		public string npcImage;
 		public string playerImage;
@@ -90,6 +92,7 @@ public class DialogueManager : MonoBehaviour {
 					dialogue.npcImage = reader.GetAttribute("tellerImage");
 					dialogue.playerImage = reader.GetAttribute("playerImage");
 					dialogue.id = GetINT(reader.GetAttribute("id"));
+					dialogue.teller = reader.GetAttribute("teller");
 					node.Add(dialogue);
 
 					XmlReader inner = reader.ReadSubtree();
@@ -237,6 +240,7 @@ public class DialogueManager : MonoBehaviour {
 			return;
 		}
 
+		teller.text = node[j].teller;
 		tellerImage.sprite = Resources.Load<Sprite>(node[j].npcImage);
 		playerImage.sprite = Resources.Load<Sprite>(node[j].playerImage);
 		
