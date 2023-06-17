@@ -1,0 +1,34 @@
+<dialogue>
+  <node id="0" npc="..." teller="Torpeda" tellerImage="TPDefault" playerImage="McNormal">
+    <answer text="Вот это шкаф. Очень сложно такого не заметить, учитывая эту необычную яркую зеленую маску на его лице. Выглядело странно, но, на удивление, ему очень даже шло." node="1" />
+  </node>
+  <node id="1" npc="..." teller="Torpeda" tellerImage="TPDefault" playerImage="McNormal">
+    <answer text="Несмотря на мой рост, я все равно выглядела перед ним как метр с кепкой. Ну, или с панамкой. Сложно было понять, куда он смотрит. Благо он повернул головой, когда решил ко мне обратиться" node="2" />
+  </node>
+  <node id="2" npc="Тебе что-то нужно?" teller="Torpeda" tellerImage="TPTalk" playerImage="McNormal">
+    <answer text="У вас очень интересная балаклава. Цвет привлекает." node="4" />
+    <answer text="..." node="3" />
+  </node>
+  <node id="3" npc="..." teller="Torpeda" tellerImage="TPDefault" playerImage="McNormal">
+    <answer text="У парня кончилось терпение, и он вновь заговорил со мной, но уже более грубо" node="5" />
+  </node>
+  <node id="4" npc="Я приму это за комплимент. У меня так-то их много, но эта – одна из любимых. Но я сомневаюсь, что тебе ничего от меня не нужно. Выкладывай.  " teller="Torpeda" tellerImage="TPDefault" playerImage="MCShy">
+    <answer text="Ну...." node="6" />
+    <answer text="..." node="3" />
+  </node>
+  <node id="5" npc="Слушай, если у тебя нет ко мне дела, проваливай. Не хватало мне еще с тобой возиться" teller="Torpeda" tellerImage="TPAngry" playerImage="McShock">
+    <answer text="Ну...." node="6" />
+  </node>
+  <node id="6" npc="Ещё раз говорю, ВЫКЛАДЫВАЙ" teller="Torpeda" tellerImage="TPAngry" playerImage="MCShy">
+    <answer text="Я.. Не совсем отсюда, и хотела попросить помощи. У тебя.. я подумала, что ты можешь мне помочь попасть в… " node="7" />
+  </node>
+  <node id="7" npc="Ваша основная цель: добраться в центр города" teller="AI" tellerImage="AI" playerImage="MCNice">
+    <answer text="В центр города. Я приехала к сестре, и она живет в центре. Но я не знаю дороги" node="8" />
+  </node>
+  <node id="8" npc="Далеко тебя занесло от центра. Разве туда не возят прямым рейсом?Если ты поможешь мне с мотоциклом, я отвезу тебя в Фразу." teller="Torpeda" tellerImage="TPTalk" playerImage="McNormal">
+    <answer text="Что мне нужно сделать?" node="9" />
+  </node>
+  <node id="9" npc="Одно из моих колес своровали рогатые ящеры, которых тут немерено. Найди колесо от моего мотоцикла и приходи к разрушенному магазину." teller="Torpeda" tellerImage="TPTalk" playerImage="MCShy">
+    <answer text="Хорошо, я поняла." exit="True" />
+  </node>
+</dialogue>

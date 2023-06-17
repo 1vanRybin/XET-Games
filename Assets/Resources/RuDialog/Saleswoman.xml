@@ -1,0 +1,8 @@
+<dialogue>
+  <node id="0" npc="Хозяйка бара сказала, что подумает насчет моей работы. Мне хоть уборщицей, лишь бы работать." teller="Девушка" tellerImage="Saleswoman" playerImage="McNormal">
+    <answer text="Ищешь работу?" node="1" />
+  </node>
+  <node id="1" npc="Я работала в магазине чуть дальше, но он разрушился после недавнего заражения.Так что смысла от него не осталось  " teller="Девушка" tellerImage="Saleswoman" playerImage="McShock">
+    <answer text="Ого, желаю удачи!" exit="True" />
+  </node>
+</dialogue>

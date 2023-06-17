@@ -1,0 +1,22 @@
+<dialogue>
+  <node id="0" npc="Я тебя слущаю." teller="Torpeda" tellerImage="TPTalk" playerImage="MCShy">
+    <answer text="Напомни, что мне нужно сделать?" node="1" />
+    <answer text="Рогатые ящеры?" node="2" />
+    <answer text="Торпеда" node="3" />
+    <answer text="Что делать, если они нападут?" node="4" />
+    <answer text="Фраза" node="5" />
+    <answer text="Спасибо, я все поняла" exit="True" />
+  </node>
+  <node id="1" npc="Найди колесо от моего мотоцикла и приходи к разрушенному магазину" teller="Torpeda" tellerImage="TPTalk" playerImage="MCShy">
+    <answer text="Спасибо, поняла." node="0" />
+  </node>
+  <node id="2" npc="Они, дружелюбные и безобидные. Хозяйка их даже подкармливает.Если ты заберешься к ним на территорию, они будут держать ухо востро." teller="Torpeda" tellerImage="TPTalk" playerImage="MCNormal">
+    <answer text="Спасибо." node="0" />
+  </node>
+  <node id="3" npc="Мои родители были последними юмористами.  Хотя сейчас, летая на мотоцикле, я очень даже оправдываю их задумку.  " teller="Torpeda" tellerImage="TPTalk" playerImage="MCShy">
+    <answer text="Интересно..." node="0" />
+  </node>
+  <node id="4" npc="Легче всего их вырубить ударом. Но, если дойдет до сильных проблем, можно будет ударить ножом. Возьми этот. Он достаточно мощный, тебе должно хватить.  " teller="Torpeda" tellerImage="TPTalk" playerImage="MCShy">
+    <answer text="Спасибо! Physics.KnifeAttack(), запомним!" node="0" />
+  </node>
+</dialogue>

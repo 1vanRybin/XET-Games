@@ -15,7 +15,7 @@ public class PauseMenuController : MonoBehaviour
 
     void Update()
     {
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
+        //UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(null);
 
         if (Input.GetButtonDown("OpenPauseMenu"))
         {

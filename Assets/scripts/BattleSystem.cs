@@ -45,15 +45,15 @@ public class BattleSystem : MonoBehaviour
         attacks.Add(10, () => FireBall());
         attacks.Add(2, () => PutBandage());
         
-        playerAttack.Add(2, () =>
-        {
-            var attack = 0;
-            for (int i = 0; i < 3; i++)
-            {
-                attack += Random.Range(1, 3);
-            }
-            return attack;
-        });
+        // playerAttack.Add(2, () =>
+        // {
+        //     var attack = 0;
+        //     for (int i = 0; i < 3; i++)
+        //     {
+        //         attack += Random.Range(1, 3);
+        //     }
+        //     return attack;
+        // });
 
         State = BattleStates.START;
         StartCoroutine(SetupBattle());
@@ -86,6 +86,15 @@ public class BattleSystem : MonoBehaviour
             }
             return damage;
         });
+        
+        playerAttack.Add(2, () => {
+            var heal = 0f;
+            foreach (var kvp in DeckCreate.cards[1].Subsequence)
+            {
+                heal += attacks[kvp]();
+            }
+            return heal;
+        });
 
         yield return new WaitForSeconds(2f);  // тест шняга, перед запуском боя, пройдёт 2 секунды
         
@@ -108,7 +117,8 @@ public class BattleSystem : MonoBehaviour
         var isDead = enemyUnit.TakeDamage(attack);
         // updHud
         _enemyAnimator.SetBool("GetHit",true);
-        Check.text = $" He crying {attack}";
+        if (attack != 0)
+            Check.text = $" He crying {attack}";
         yield return new WaitForSeconds(1f);
         _enemyAnimator.SetBool("GetHit", false);
         

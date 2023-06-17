@@ -1,11 +1,11 @@
 <dialogue>
-  <node id="0" npc="..." teller="Waiter" tellerImage="Waiter" playerImage="McNeutral">
+  <node id="0" npc="..." teller="Waiter" tellerImage="Waiter" playerImage="McNormal">
     <answer text="Извините, а где у вас администратор?" node="1" />
   </node>
   <node id="1" npc="Хозяйка бара в данный момент уехала по делам. У вас к ней вопрос?" teller="Waiter" tellerImage="Waiter" playerImage="McShy">
     <answer text="Нет-нет. Просто интересуюсь" node="2" />
   </node>
-  <node id="2" npc="Если что-то нужно, не стесняйтесь обращаться." teller="Waiter" tellerImage="Waiter" playerImage="McNeutral">
+  <node id="2" npc="Если что-то нужно, не стесняйтесь обращаться." teller="Waiter" tellerImage="Waiter" playerImage="McNormal">
     <answer text="Если что-то нужно, не стесняйтесь обращаться." exit="True" />
   </node>
 </dialogue>

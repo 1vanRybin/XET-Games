@@ -7,13 +7,26 @@ using UnityEngine.UI;
 
 public class DeckCreate : MonoBehaviour
 {
-
-    [SerializeField] GameObject player;
-    [SerializeField] GameObject enemy;
     [SerializeField] GameObject FightPad;
     [SerializeField] InputField input;
 
     [SerializeField] string inputText;
+    
+    [SerializeField] Text helpText;
+    [SerializeField] string text;
+    [SerializeField] Color textColor;
+
+    [SerializeField] Transform scrollView;
+    [SerializeField] GameObject item;
+
+    private Queue<Button> activeCards = new();
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        helpText.text = text;
+        helpText.color = textColor;
+        helpText.enabled = true;
+    }
 
     public class Card
     {
@@ -37,7 +50,13 @@ public class DeckCreate : MonoBehaviour
             Pad.pad.enabled = true;
             FightPad.SetActive(true);
             input.text = inputText;
+            helpText.enabled = false;
         }
+    }
+    
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        helpText.enabled = false;
     }
 
     public void CreateCard()
@@ -61,19 +80,19 @@ public class DeckCreate : MonoBehaviour
                         }
                         
                         public static class Physics
-{
-     public static void KnifeAttack()
-      {
-          MyClass.methods.Add(1);
-       }
-} 
-public static class Heal
-{
-     public static void PutBandage()
-      {
-          MyClass.methods.Add(2);
-       }
-} 
+                        {
+                             public static void KnifeAttack()
+                              {
+                                  MyClass.methods.Add(1);
+                               }
+                        } 
+                        public static class Heal
+                        {
+                             public static void PutBandage()
+                              {
+                                  MyClass.methods.Add(2);
+                               }
+                        } 
 public static class Shields
 {
      public static void PutOnShield()
@@ -104,10 +123,16 @@ public static class Weakeness
 
             var card = new Card(GetMethodName(input.text), result.Result);
             cards.Add(card);
+            
+            var itemGo = Instantiate(item, scrollView, true);
+            itemGo.GetComponentInChildren<Text>().text = card.Name;
+            var a = itemGo.GetComponent<Button>();
 
             if(cards.Count <= 3)
             {
                 card.IsActive = true;
+                a.interactable  = false;
+                activeCards.Enqueue(a);
             }
         }
 
@@ -116,6 +141,15 @@ public static class Weakeness
             Debug.Log("WARNING : " + e.Message);
         }
     }
+
+    public void doada(Button button)
+    {
+        var a = activeCards.Dequeue();
+        a.interactable = true;
+        
+        activeCards.Enqueue(button);
+    }
+
     public static string GetMethodName(string methodString)
     {
         var method = methodString.Substring(0, methodString.IndexOf('('));

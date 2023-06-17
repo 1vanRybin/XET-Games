@@ -1,0 +1,11 @@
+<dialogue>
+  <node id="0" npc="Я жду свой коктейль уже десять минут. Неприемлемо!" teller="Девушка" tellerImage="Visitor" playerImage="McNormal">
+    <answer text="Возле девушки на столе стояло несколько пустых стаканов. Она не выглядела так, словно сильно хочет пить." node="1" />
+  </node>
+  <node id="1" npc="..." teller="Девушка" tellerImage="Visitor" playerImage="McNice">
+    <answer text="Тебе дать водички? Если хочется пить, у меня есть." node="2" />
+  </node>
+  <node id="2" npc="Да мне не пить хочется. Я жду официанта, но он слишком занят другими людьми. " teller="Девушка" tellerImage="Visitor" playerImage="McShy">
+    <answer text="А.. Понятно." exit="True" />
+  </node>
+</dialogue>

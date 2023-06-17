@@ -1861,6 +1861,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 711661242}
     m_Modifications:
+    - target: {fileID: 8479909644087301637, guid: c9e903feacd87494eba7a1e4b2b8a1e3, type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8479909644522848572, guid: c9e903feacd87494eba7a1e4b2b8a1e3, type: 3}
       propertyPath: m_Name
       value: Options
@@ -1948,6 +1952,10 @@ PrefabInstance:
     - target: {fileID: 8479909644522848575, guid: c9e903feacd87494eba7a1e4b2b8a1e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479909645098170088, guid: c9e903feacd87494eba7a1e4b2b8a1e3, type: 3}
+      propertyPath: m_IsOn
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8479909645505709902, guid: c9e903feacd87494eba7a1e4b2b8a1e3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
